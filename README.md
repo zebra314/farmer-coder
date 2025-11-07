@@ -1,6 +1,6 @@
 # Farmer Coder
 
-Code `The Farmer was Replaced` Steam game in external editor on Linux.
+Code [The Farmer was Replaced](https://store.steampowered.com/app/2060160/The_Farmer_Was_Replaced/) Steam game in external editor on Linux.
 
 ## Setup with script
 
@@ -43,7 +43,7 @@ mv "$HOME/.local/share/Steam/steamapps/compatdata/2060160/pfx/drive_c/users/stea
 3. Create the symbolic link back to the game folder
 
 ```sh
-ln -s ~/farmer-code/Saves "/home/alfonso/.local/share/Steam/steamapps/compatdata/2060160/pfx/drive_c/users/steamuser/AppData/LocalLow/TheFarmerWasReplaced/TheFarmerWasReplaced/Saves"
+ln -s ~/farmer-code/Saves "$HOME/.local/share/Steam/steamapps/compatdata/2060160/pfx/drive_c/users/steamuser/AppData/LocalLow/TheFarmerWasReplaced/TheFarmerWasReplaced/Saves"
 ```
 
 - Verify
