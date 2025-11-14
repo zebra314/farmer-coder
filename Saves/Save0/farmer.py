@@ -1,14 +1,14 @@
 def plant_carrot():
-    # Use water
-    if num_items(Items.Water) > 0:
+	# Use water
+	if num_items(Items.Water) > 0:
 		use_item(Items.Water)
 
 	# Lack material
 	if num_items(Items.Wood) < 4:
 		if plant_tree():
-		    return
-        else:
-            plant(Entities.Grass)
+			return
+		else:
+			plant(Entities.Grass)
 
 	if num_items(Items.Hay) < 4:
 		plant(Entities.Grass)
@@ -21,30 +21,47 @@ def plant_carrot():
 	if get_ground_type() == Grounds.Soil:
 		plant(Entities.Carrot)
 
-    return True
+	return True
 
 def plant_tree():
-    if (get_pos_y() % 2) == (get_pos_x() % 2):
-        plant(Entities.Tree)
+	if (get_pos_y() % 2) == (get_pos_x() % 2):
+		plant(Entities.Tree)
 
-        # Use water
-        if num_items(Items.Water) > 0:
-            use_item(Items.Water)
+		# Use water
+		if num_items(Items.Water) > 0:
+			use_item(Items.Water)
 
-        return True
-    return False
+		return True
+	return False
 
-def plant_pumpkin():
-    if num_items(Items.Carrot) < 4:
-        plant_carrot()
 
-    # Plant target
+def plant_pumpkin(item_list):
+	if num_items(Items.Carrot) < 4:
+		plant_carrot()
+
+	# Plant target
 	if get_ground_type() == Grounds.Grassland:
 		till()
 
 	if get_ground_type() == Grounds.Soil:
 		plant(Entities.Pumpkin)
 
-    return True
+	return True
+
+def harvest_pumpkin(item_list):
+    if get_entity_type() != Entities.Pumpkin and can_harvest():
+        harvest()
+        return False
+
+    is_all_pumpkin = True
+    for row in item_list:
+        for item in row:
+            if item != Entities.Pumpkin:
+                is_all_pumpkin = False
+
+	if is_all_pumpkin and can_harvest():
+		harvest()
+        return True
+
 
 
