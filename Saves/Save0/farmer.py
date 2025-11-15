@@ -1,7 +1,7 @@
 def plant_carrot():
 	# Use water
-	if num_items(Items.Water) > 0:
-		use_item(Items.Water)
+	# if num_items(Items.Water) > 0:
+	# 	use_item(Items.Water)
 
 	# Lack material
 	if num_items(Items.Wood) < 4:
@@ -28,8 +28,8 @@ def plant_tree():
 		plant(Entities.Tree)
 
 		# Use water
-		if num_items(Items.Water) > 0:
-			use_item(Items.Water)
+		# if num_items(Items.Water) > 0:
+		# 	use_item(Items.Water)
 
 		return True
 	return False
@@ -49,19 +49,19 @@ def plant_pumpkin(item_list):
 	return True
 
 def harvest_pumpkin(item_list):
-    if get_entity_type() != Entities.Pumpkin and can_harvest():
-        harvest()
-        return False
+	if get_entity_type() != Entities.Pumpkin and can_harvest():
+		harvest()
+		return False
 
-    is_all_pumpkin = True
-    for row in item_list:
-        for item in row:
-            if item != Entities.Pumpkin:
-                is_all_pumpkin = False
+	is_all_pumpkin = True
+	for row in item_list:
+		for item in row:
+			if item != Entities.Pumpkin:
+				is_all_pumpkin = False
 
 	if is_all_pumpkin and can_harvest():
 		harvest()
-        return True
+		return True
 
 
 

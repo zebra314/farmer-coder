@@ -23,3 +23,23 @@ def move2():
 
 		return
 
+def move3(target_x, target_y):
+	x = get_pos_x()
+	y = get_pos_y()
+
+	dx = x - target_x
+	dy = y - target_y
+
+	if dy < 0:
+		for _ in range(abs(dy)):
+			move(South)
+	elif dy > 0:
+		for _ in range(abs(dy)):
+			move(North)
+
+	if dx < 0:
+		for _ in range(abs(dx)):
+			move(West)
+	elif dx > 0:
+		for _ in range(abs(dx)):
+			move(East)
