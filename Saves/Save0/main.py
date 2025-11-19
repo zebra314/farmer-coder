@@ -78,8 +78,8 @@ while True:
 		else:
 			move(East)
 
-	if is_checked[x][y]:
-		continue
+	# if is_checked[x][y]:
+	#     continue
 
 	# Update item list
 	item_list[x][y] = get_entity_type()
@@ -89,39 +89,42 @@ while True:
 		is_checked[x][y] = True
 
 	# Harvest
-	if farmer.harvest_pumpkin(item_list):
-		for i in range(get_world_size()):
-			for j in range(get_world_size()):
-				item_list[i][j] = None
+	# if farmer.harvest_pumpkin(item_list):
+	#     for i in range(get_world_size()):
+	#         for j in range(get_world_size()):
+	#             item_list[i][j] = None
 
-		for i in range(get_world_size()):
-			for j in range(get_world_size()):
-				is_checked[i][j] = False
+	#     for i in range(get_world_size()):
+	#         for j in range(get_world_size()):
+	#             is_checked[i][j] = False
+	harvest()
 
 	# Plant
-	farmer.plant_pumpkin(item_list)
+	# farmer.plant_pumpkin(item_list)
 
-	# wood_num = num_items(Items.Wood)
-	# carrot_num = num_items(Items.Carrot)
-	# hay_num = num_items(Items.Hay)
-	# pumpkin_num = num_items(Items.Pumpkin)
+	wood_num = num_items(Items.Wood)
+	carrot_num = num_items(Items.Carrot)
+	hay_num = num_items(Items.Hay)
+	pumpkin_num = num_items(Items.Pumpkin)
 
-	# if pumpkin_num < target_pumpkin_num:
-	#     farmer.plant_pumpkin()
 
-	# if wood_num < target_wood_num:
-	#     if farmer.plant_tree():
-	# 		continue
+	if wood_num < target_wood_num:
+		if farmer.plant_tree():
+			continue
 
-	# if carrot_num < target_carrot_num:
-	# 	farmer.plant_carrot()
-	# 	continue
+	if hay_num < target_hay_num:
+		plant(Entities.Grass)
+		continue
 
-	# if hay_num < target_hay_num:
-	# 	plant(Entities.Grass)
-	# 	continue
+	if carrot_num < target_carrot_num:
+		farmer.plant_carrot()
+		continue
 
-	# target_wood_num *= 2
-	# target_carrot_num *= 2
-	# target_hay_num *= 2
-	# target_pumpkin_num *= 2
+	if pumpkin_num < target_pumpkin_num:
+		farmer.plant_pumpkin()
+		continue
+
+	target_wood_num *= 2
+	target_carrot_num *= 2
+	target_hay_num *= 2
+	target_pumpkin_num *= 2
